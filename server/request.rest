@@ -1,0 +1,30 @@
+//finAll
+GET http://localhost:3003/products
+Content-Type: application/json
+###
+//findOne
+GET http://localhost:3003/products/1e7f5f98-901e-47c9-8fef-02c2165798b2
+Content-Type: application/json
+###
+//create
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{ 
+  "name": "a",
+  "price": "1.10",
+  "qty_stock": 3
+}
+###
+//update
+PATCH http://localhost:3003/products/429c9abe-6d21-44b8-8cd3-13a709f737e2
+Content-Type: application/json
+
+{ 
+  "qty_stock": 13
+}
+###
+//delete
+DELETE http://localhost:3003/products/1e7f5f98-901e-47c9-8fef-02c2165798b2
+Content-Type: application/json
+

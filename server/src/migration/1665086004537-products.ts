@@ -9,7 +9,7 @@ export class products1665086004537 implements MigrationInterface {
                 columns: [
                     {
                         name: "id",
-                        type: "int",
+                        type: "varchar",
                         isPrimary: true,
                         comment: "id do produto"
                     },
