@@ -34,19 +34,6 @@ export class ProductsData extends BaseDatabase {
     }
   };
 
-  create = async (input: Products): Promise<void> => {
-    try {
-      await BaseDatabase.connection("products")
-        .insert({
-          id: input.getId(),
-          name: input.getName(),
-          price: input.getPrice(),
-          qty_stock: input.getStock()
-        })
-    } catch (error: any) {
-      throw new CustomError(500, error.sqlMessage);
-    }
-  };
 
   update = async (input: Products): Promise<void> => {
     try {
@@ -61,13 +48,4 @@ export class ProductsData extends BaseDatabase {
     }
   };
 
-  delete = async (id: string) => {
-    try {
-      await BaseDatabase.connection("products")
-        .where({ id })
-        .delete()
-    } catch (error: any) {
-      throw new CustomError(500, error.sqlMessage);
-    }
-  };
 }

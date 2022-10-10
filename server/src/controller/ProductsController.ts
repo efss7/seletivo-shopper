@@ -26,17 +26,6 @@ export class ProductsController {
     }
   }
 
-  public create = async (req: Request, res: Response) => {
-    try {
-      const { name, price, qty_stock } = req.body
-      const inputs: ProductCreateDto = { name, price, qty_stock }
-      await this.productsBusiness.create(inputs)
-      res.status(201).send("Product registered successfully!")
-    } catch (error: any) {
-      res.status(error.statusCode || 400).send({ error: error.message })
-    }
-  }
-
   public update = async (req: Request, res: Response) => {
     try {
       const { qty_stock } = req.body
@@ -49,14 +38,5 @@ export class ProductsController {
     }
   }
 
-  delete = async (req: Request, res: Response): Promise<void> => {
-    const id = req.params.id;
-    try {
-      await this.productsBusiness.delete(id)
-      res.status(200).send("Produto excluído com sucesso");
-    } catch (error: any) {
-      res.status(error.statusCode || 400).send({ error: error.message });
-    }
-  }
 }
 export default new ProductsController(productsBusiness);
