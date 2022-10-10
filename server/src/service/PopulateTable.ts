@@ -7,7 +7,7 @@ import { ProductsEntity } from '../model/entity/ProductsEntity';
 //Arquivo de popular a tabela com o arquivo csv
 
 const read = () => {
-  const products:ProductsEntity[] = []
+  const products: ProductsEntity[] = []
   fs.createReadStream('./products.csv')
     .pipe(csv.parse({ headers: true }))
     .on('error', error => console.error(error))

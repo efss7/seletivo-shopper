@@ -1,7 +1,7 @@
 import { ProductsData } from "../data/ProductsData";
 import { ProductCreateDto, ProductsUpdateDto } from "../model/dto/ProductDto";
 import { Products } from "../model/Products";
-import { IdGenerator } from "../services/IdGenerator";
+import { IdGenerator } from "../service/IdGenerator";
 import { CustomError } from "./errors/CustomError";
 
 export class ProductsBusiness {
@@ -17,12 +17,12 @@ export class ProductsBusiness {
     }
   };
 
-  findOne = async (id:string) => {
+  findById = async (id: string) => {
     try {
       if (!id || typeof id !== "string") {
         throw new CustomError(422, "Id invalid")
       }
-      const result = await this.productsData.findOne(id);
+      const result = await this.productsData.findById(id);
       if (result.length === 0) {
         throw new CustomError(404, "Product not found")
       }
@@ -45,7 +45,7 @@ export class ProductsBusiness {
         throw new CustomError(422, "Quantity in stock invalid")
       }
       const id = this.idGenerator.generateId()
-      const products = new Products(id,qty_stock,name,price)
+      const products = new Products(id, qty_stock, name, price)
       await this.productsData.create(products)
     } catch (error: any) {
       throw new CustomError(error.statusCode, error.message)
@@ -54,7 +54,7 @@ export class ProductsBusiness {
 
   update = async (inputs: ProductsUpdateDto) => {
     try {
-      const {id, qty_stock } = inputs
+      const { id, qty_stock } = inputs
       if (!id || typeof id !== "string") {
         throw new CustomError(422, "Id is invalid")
       }
@@ -72,6 +72,10 @@ export class ProductsBusiness {
     try {
       if (!id || typeof id !== "string") {
         throw new CustomError(422, "Id is invalid");
+      }
+      const result = await this.productsData.findById(id);
+      if (result.length === 0) {
+        throw new CustomError(404, "Product not found")
       }
       await this.productsData.delete(id);
     } catch (error: any) {

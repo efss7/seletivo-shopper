@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import { DataSource } from "typeorm";
-import { products1665086004537 } from "../migration/1665086004537-products";
+import { products1665086004537 } from "../migrations/1665086004537-products";
+import { orders1665255204463 } from "../migrations/1665255204463-orders";
 import { ProductsEntity } from "../model/entity/ProductsEntity";
 
 config()
@@ -15,5 +16,5 @@ export const AppDataSource = new DataSource({
     synchronize: false,
     entities: [ProductsEntity],
     subscribers: [],
-    migrations: [products1665086004537],
+    migrations: [products1665086004537, orders1665255204463],
 })

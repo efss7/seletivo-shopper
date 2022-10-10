@@ -13,7 +13,7 @@ export class ProductsData extends BaseDatabase {
     }
   }
 
-  findOne = async (id: string) => {
+  findById = async (id: string) => {
     try {
       const result = await BaseDatabase.connection("products")
         .select("*")
@@ -21,9 +21,9 @@ export class ProductsData extends BaseDatabase {
       if (result.length !== 0) {
         const product = new Products(
           result[0].id,
+          result[0].qty_stock,
           result[0].name,
           result[0].price,
-          result[0].qty_stock
         )
         return [product]
       } else {

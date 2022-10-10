@@ -21,6 +21,9 @@ export class Products {
   public getStock(): number {
     return this.qty_stock;
   }
+  public setStock(purchaseQuantity:number):void{
+    this.qty_stock = purchaseQuantity
+  }
 
 }
 

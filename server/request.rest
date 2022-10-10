@@ -2,7 +2,7 @@
 GET http://localhost:3003/products
 Content-Type: application/json
 ###
-//findOne
+//findById
 GET http://localhost:3003/products/1e7f5f98-901e-47c9-8fef-02c2165798b2
 Content-Type: application/json
 ###
@@ -27,4 +27,16 @@ Content-Type: application/json
 //delete
 DELETE http://localhost:3003/products/1e7f5f98-901e-47c9-8fef-02c2165798b2
 Content-Type: application/json
+
+###
+
+POST http://localhost:3003/orders
+Content-Type: application/json
+
+{ 
+  "name": "teste",
+  "dlr_date": "2022/11/01",
+  "products_id": ["016e345f-a74b-4663-985d-c16b654762f9", "02b8cfe4-4553-44e3-81c2-57ebe6b4ba01"],
+  "product_qty": [900, 16]
+}
 
