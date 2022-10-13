@@ -5,23 +5,32 @@ import {
   Box,
   IconButton,
   LinearProgress,
+  Pagination,
   Toolbar,
   Typography,
 } from '@mui/material';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PopUp } from '../components/popUp/PopUp';
 import ProductCard from '../components/ProductCard';
-import { ProductContext } from '../context/ProductContext';
+import { State } from '../global/State';
 import { FindAll } from '../services/Requests';
 
 export const FeedPage = () => {
-  const { setProducts, products } = useContext(ProductContext);
+  const { setProducts, products, cart, isLoading, setIsLoading } =
+    useContext(State);
+
   useEffect(() => {
-    FindAll(setProducts);
+    FindAll(setProducts, setIsLoading);
   }, [setProducts]);
+
   const navigate = useNavigate();
+
+  const cartProduct = cart.length;
+
   return (
     <>
+      <PopUp />
       <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="h6">Shopper</Typography>
@@ -34,15 +43,29 @@ export const FeedPage = () => {
               onClick={() => navigate('/carrinho')}
               color="inherit"
             >
-              <Badge>
+              <Badge badgeContent={cartProduct} color="secondary">
                 <ShoppingCart />
               </Badge>
             </IconButton>
           </Box>
         </Toolbar>
-        <LinearProgress color="primary" />
       </AppBar>
-      {products.length > 0 && <ProductCard products={products} />}
+      {isLoading ? (
+        <LinearProgress color="primary" />
+      ) : (
+        <>{products.length > 0 && <ProductCard products={products} />}</>
+      )}
+
+      {/* <Pagination
+        page={page}
+        count={Math.ceil(50 / 5)}
+        onChange={(_, newPage) =>
+          setSearchParams(
+            { products, page: newPage.toString() },
+            { replace: true }
+          )
+        }
+      /> */}
     </>
   );
 };

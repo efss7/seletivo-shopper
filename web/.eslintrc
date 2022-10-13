@@ -29,6 +29,10 @@
         "react/destructuring-assignment":"off",
         "no-console": "off",
         "arrow-body-style":"off",
-        "no-param-reassign":"off"
+        "no-param-reassign":"off",
+        "no-nested-ternary":"off",
+        "no-shadow":"off",
+        "no-alert":"off"
+
     }
 }
