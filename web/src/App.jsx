@@ -1,11 +1,17 @@
+import { ThemeProvider } from "@mui/material";
+import theme from "./constants/theme";
+import { GlobalState } from "./context/ProductContext";
 import { Router } from "./routes/Router";
+
 
 function App() {
 
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
+    <GlobalState>
       <Router/>
-    </div>
+    </GlobalState>
+    </ThemeProvider>
   );
 }
 
