@@ -1,7 +1,6 @@
 import { ProductsData } from "../data/ProductsData";
-import { ProductCreateDto, ProductsUpdateDto } from "../model/dto/ProductDto";
+import { ProductsUpdateDto } from "../model/dto/ProductDto";
 import { Products } from "../model/Products";
-import { IdGenerator } from "../service/IdGenerator";
 import { CustomError } from "./errors/CustomError";
 
 export class ProductsBusiness {

@@ -82,7 +82,7 @@ export default function CartPage() {
           min={new Date().toISOString().slice(0, 10)}
         />
         <Typography variant="h6">
-          Valor total da compra: R$ {totalPrice}
+          Valor total da compra: R$ {totalPrice.toFixed(2).replace('.', ',')}
         </Typography>
         <Typography variant="h6">
           Produtos comprados: {totalQuantity}

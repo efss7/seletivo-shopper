@@ -1,8 +1,6 @@
 import { Request, Response } from "express"
 import ordersBusiness, { OrdersBusiness } from "../business/OrdersBusiness"
-import { OrdersData } from "../data/OrdersData"
 import { OrdersCreateDto } from "../model/dto/OrdersDto"
-import { IdGenerator } from "../service/IdGenerator"
 
 export class OrdersController {
   constructor(

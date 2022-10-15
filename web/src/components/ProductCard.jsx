@@ -81,7 +81,7 @@ const ProductCard = (props) => {
                 </Typography>
                 <Typography color="textSecondary">Preço:</Typography>
                 <Typography variant="h6">
-                  R$ {product.price}
+                  R$ {product.price.toFixed(2).replace('.', ',')}
                   <br />
                 </Typography>
                 <Typography color="textSecondary">

@@ -1,26 +1,15 @@
-//finAll
+//findAll
 GET http://localhost:3003/products
 Content-Type: application/json
 ###
-//findById
-GET http://localhost:3003/products/0246106b-0ca3-4b2b-b190-e5ed2beeb13a
-Content-Type: application/json
-###
-//update
-PATCH http://localhost:3003/products/0246106b-0ca3-4b2b-b190-e5ed2beeb13a
-Content-Type: application/json
-
-{ 
-  "qty_stock": 13
-}
-###
+//ProductList
 POST http://localhost:3003/orders
 Content-Type: application/json
 
 { 
   "name": "teste",
   "dlr_date": "2022/11/01",
-  "products_id": ["016e345f-a74b-4663-985d-c16b654762f9", "02b8cfe4-4553-44e3-81c2-57ebe6b4ba01"],
-  "product_qty": [900, 16]
+  "products_id": ["0246106b-0ca3-4b2b-b190-e5ed2beeb13a", "0fe03bb9-ea61-4a4b-b62d-9c57b282b04d"],
+  "product_qty": [1, 1]
 }
 
