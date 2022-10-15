@@ -1,4 +1,4 @@
-import { ShoppingCart } from '@mui/icons-material';
+import { ArrowBack, ShoppingCart } from '@mui/icons-material';
 import {
   AppBar,
   Badge,
@@ -30,9 +30,17 @@ export const FeedPage = () => {
 
   return (
     <>
-      <PopUp />
       <AppBar position="static" color="primary">
         <Toolbar>
+          <IconButton
+            size="large"
+            aria-label="show more"
+            aria-haspopup="true"
+            onClick={() => navigate(-1)}
+            color="inherit"
+          >
+            <ArrowBack />
+          </IconButton>
           <Typography variant="h6">Shopper</Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
@@ -43,7 +51,7 @@ export const FeedPage = () => {
               onClick={() => navigate('/carrinho')}
               color="inherit"
             >
-              <Badge badgeContent={cartProduct} color="secondary">
+              <Badge badgeContent={cartProduct} color="neutralColor">
                 <ShoppingCart />
               </Badge>
             </IconButton>

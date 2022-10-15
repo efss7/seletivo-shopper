@@ -15,3 +15,16 @@ export const FindAll = (setProducts, SetIsLoading) => {
         SetIsLoading(false);
     });
 };
+
+export const ProductList = (body, SetIsLoading) => {
+  // SetIsLoading(true);
+  axios
+    .post(`${baseUrl}/orders`, body)
+    .then((res) => {
+      console.log(res.data)
+    })
+    .catch((error) => {
+      console.log(error);
+      // SetIsLoading(false);
+    });
+};

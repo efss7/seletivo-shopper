@@ -17,8 +17,16 @@ import { State } from '../global/State';
 const ProductCard = (props) => {
   const navigate = useNavigate();
   const { products } = props;
-  const { cart, setCart, quantity, handleQuantity, clearInput, setProducts } =
-    useContext(State);
+  const {
+    cart,
+    setCart,
+    quantity,
+    handleQuantity,
+    clearInput,
+    setProducts,
+    calculeTotalPrice,
+    calculeTotalQuantity,
+  } = useContext(State);
   const addProductToCart = (product) => {
     if (quantity > 0) {
       product.inCart = true;
@@ -26,13 +34,18 @@ const ProductCard = (props) => {
       product.input = false;
       setCart([...cart, product]);
       clearInput();
+      calculeTotalPrice([...cart, product]);
+      calculeTotalQuantity([...cart, product]);
     } else {
       alert('Por favor, selecione uma quantidade!');
     }
   };
   const removeProductFromCart = (product) => {
     product.inCart = false;
-    setCart(cart.filter((prod) => prod.id !== product.id));
+    const newCart = cart.filter((prod) => prod.id !== product.id)
+    setCart(newCart);
+    calculeTotalPrice(newCart);
+    calculeTotalQuantity(newCart);
   };
 
   const openInput = (product) => {
@@ -60,6 +73,13 @@ const ProductCard = (props) => {
               </Typography>
               <Typography variant="h6" component="h2">
                 {product.name}
+              </Typography>
+              <Typography color="textSecondary">
+                Preço:
+              </Typography>
+              <Typography variant="h6">
+                R$ {product.price}
+                <br />
               </Typography>
               <Typography color="textSecondary">
                 Quantidade disponível:

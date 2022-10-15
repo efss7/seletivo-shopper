@@ -6,6 +6,10 @@ const theme = createTheme({
       main: '#52B591',
       contrastText: 'white',
     },
+    neutralColor: {
+      main: '#1D1A39',
+      contrastText: 'white',
+    },
   },
 });
 

@@ -19,4 +19,5 @@ export const Content = styled.div`
   text-align: center;
   padding: 0px 16px 0px 16px;
   height: 216px;
+  border-radius: 8px;
 `;

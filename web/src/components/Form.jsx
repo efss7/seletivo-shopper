@@ -1,62 +1,63 @@
-// import { Button, TextField } from '@mui/material';
-// import React from 'react'
+import { Button, Icon, TextField, Typography, Box } from '@mui/material';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useForm from '../hooks/useForm';
+import { ProductList } from '../services/Requests';
+import Logo from '../assets/shopper-logo2.png';
+import { State } from '../global/State';
 
-// export const Form = () => {
-//     const { form, onChange, clear } = useForm({
-//       name: '',
-//       date: '',
-//     });
-//     const onSubmitForm = (event) => {
-//       console.log(form);
-//       event.preventDefault();
-//       singUp(form, clear, navigate, setRightButtonText);
-//     };
-//   return (
-//     <form onSubmit={onSubmitForm}>
-//       <TextField
-//         name={'username'}
-//         value={form.username}
-//         onChange={onChange}
-//         label={'Nome'}
-//         variant={'outlined'}
-//         fullWidth
-//         margin={'normal'}
-//         required
-//         type={'username'}
-//       />
-//       <TextField
-//         name={'email'}
-//         value={form.email}
-//         onChange={onChange}
-//         label={'E-mail'}
-//         variant={'outlined'}
-//         fullWidth
-//         margin={'normal'}
-//         required
-//         type={'email'}
-//       />
-//       <TextField
-//         name={'password'}
-//         value={form.password}
-//         onChange={onChange}
-//         label={'Senha'}
-//         variant={'outlined'}
-//         fullWidth
-//         margin={'normal'}
-//         required
-//         type={'password'}
-//       />
-//       <Button
-//         fullWidth
-//         variant={'contained'}
-//         color={'primary'}
-//         margin={'normal'}
-//         type={'submit'}
-//       >
-//         Cadastrar
-//       </Button>
-//     </form>
-//   );
-// }
+export const Form = () => {
+  const navigate = useNavigate()
+  const { form, onChange } = useContext(State)
 
-// export default Form;
+  console.log(form.date, form.name)
+  return (
+    <>
+      <Box align="center">
+        <img width="300px" src={Logo} />
+      </Box>
+
+      <Typography variant="h6">Dê seu nome à sua lista:</Typography>
+      <TextField
+        name="name"
+        value={form.name}
+        onChange={onChange}
+        label="Nome"
+        variant="outlined"
+        fullWidth
+        placeholder="Ex: Ana, João..."
+        margin="normal"
+        required
+        type="name"
+      />
+      <Typography variant="h6">Selecione a data de entrega:</Typography>
+      <Typography color="textSecondary">
+        Obs: só serão válidas datas atuais e futuras
+      </Typography>
+      <TextField
+        name="date"
+        value={form.date}
+        onChange={onChange}
+        label=""
+        variant="outlined"
+        fullWidth
+        margin="normal"
+        required
+        type="date"
+        min={new Date().toISOString().slice(0, 10)}
+      />
+      <Button
+        fullWidth
+        variant="contained"
+        color="primary"
+        margin="normal"
+        type="submit"
+        onClick={() => navigate("/home")}
+      >
+        Ir às compras !!
+      </Button>
+    </>
+  );
+};
+
+export default Form;

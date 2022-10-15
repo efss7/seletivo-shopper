@@ -32,7 +32,8 @@
         "no-param-reassign":"off",
         "no-nested-ternary":"off",
         "no-shadow":"off",
-        "no-alert":"off"
+        "no-alert":"off",
+        "jsx-a11y/alt-text":"off"
 
     }
 }

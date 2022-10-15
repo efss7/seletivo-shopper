@@ -1,14 +1,15 @@
-import React from 'react'
-import { ContainerPopUp, Content } from './styles'
+import React from 'react';
+import { Form } from '../Form';
+import { ContainerPopUp, Content } from './styles';
 
-export const PopUp = () =>{
+export const PopUp = () => {
   return (
     <ContainerPopUp>
-        <Content
-        
-        />
+      <Content>
+        <Form />
+      </Content>
     </ContainerPopUp>
-  )
-}
+  );
+};
 
 export default PopUp;
