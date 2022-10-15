@@ -1,16 +1,14 @@
-import { Button, Icon, TextField, Typography, Box } from '@mui/material';
+import { Button, TextField, Typography, Box } from '@mui/material';
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useForm from '../hooks/useForm';
 import { ProductList } from '../services/Requests';
-import Logo from '../assets/shopper-logo2.png';
+import Logo from '../assets/shopper-logo.png';
 import { State } from '../global/State';
 
 export const Form = () => {
   const navigate = useNavigate()
   const { form, onChange } = useContext(State)
-
-  console.log(form.date, form.name)
   return (
     <>
       <Box align="center">

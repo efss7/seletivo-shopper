@@ -1,4 +1,3 @@
-import { PriceChange } from '@mui/icons-material';
 import React, { useState } from 'react';
 import useForm from '../hooks/useForm';
 import { useInput } from '../hooks/useInput';
@@ -10,8 +9,6 @@ export function GlobalState(props) {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
-  const [name, setName] = useState('');
-  const [date, setDate] = useState('');
   const [quantity, handleQuantity, clearInput] = useInput('');
   const { form, onChange, clear } = useForm({
     name: '',
@@ -19,6 +16,9 @@ export function GlobalState(props) {
   });
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [displaySuccessPopUp, setDisplaySuccessPopUp] = useState(false);
+  const [displayErrorPopUp, setDisplayErrorPopUp] = useState(false);
+  const [search, handleSearch, clearSearch] = useInput('');
 
   const calculeTotalPrice = (newCart) => {
     const price = newCart.reduce(
@@ -34,16 +34,39 @@ export function GlobalState(props) {
     );
     setTotalQuantity(quantityPurchased);
   };
-  const finalizeOrder=()=>{
+  const finalizeOrder = () => {
     const newOrder = {
-      name:form.name,
-      dlr_date:form.date,
-      products_id: cart.map((product)=> product.id),
-      product_qty: cart.map((product)=> product.quantity)
-    }
-    ProductList(newOrder)
-    console.log(newOrder)
-  }
+      name: form.name,
+      dlr_date: form.date,
+      products_id: cart.map((product) => product.id),
+      product_qty: cart.map((product) => product.quantity),
+    };
+    ProductList(newOrder, setIsLoading, setDisplaySuccessPopUp);
+  };
+
+  const checkDeliveryDataHasPassed = (deliveryData) => {
+    return (
+      new Date(deliveryData).getTime() >=
+      new Date(new Date().toISOString().slice(0, 10)).getTime()
+    );
+  };
+
+  const checkOrder = () => {
+    const isOk =
+      form.name &&
+      form.date &&
+      checkDeliveryDataHasPassed(form.date) &&
+      cart.length > 0;
+    isOk ? finalizeOrder() : setDisplayErrorPopUp(true);
+  };
+
+  const clearAllData = () => {
+    setCart([]);
+    setTotalPrice(0);
+    setTotalQuantity(0);
+    clear();
+    setDisplaySuccessPopUp(false);
+  };
 
   const params = {
     products,
@@ -55,10 +78,6 @@ export function GlobalState(props) {
     clearInput,
     isLoading,
     setIsLoading,
-    name,
-    setName,
-    date,
-    setDate,
     form,
     onChange,
     clear,
@@ -68,7 +87,16 @@ export function GlobalState(props) {
     setTotalPrice,
     calculeTotalPrice,
     calculeTotalQuantity,
-    finalizeOrder
+    finalizeOrder,
+    displaySuccessPopUp,
+    setDisplaySuccessPopUp,
+    clearAllData,
+    displayErrorPopUp,
+    setDisplayErrorPopUp,
+    checkOrder,
+    search,
+    handleSearch,
+    clearSearch,
   };
 
   return <State.Provider value={params}>{props.children}</State.Provider>;

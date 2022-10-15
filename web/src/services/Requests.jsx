@@ -2,29 +2,30 @@ import axios from 'axios';
 import { baseUrl } from '../constants/Constants';
 
 
-export const FindAll = (setProducts, SetIsLoading) => {
-  SetIsLoading(true)
+export const FindAll = (setProducts, setIsLoading) => {
+  setIsLoading(true)
   axios
     .get(`${baseUrl}/products`)
     .then((res) => {
       setProducts(res.data);
-      SetIsLoading(false);
+      setIsLoading(false);
     })
     .catch((error) => {
       console.log(error);
-        SetIsLoading(false);
+        setIsLoading(false);
     });
 };
 
-export const ProductList = (body, SetIsLoading) => {
-  // SetIsLoading(true);
+export const ProductList = (body, setIsLoading, setDisplaySuccessPopUp) => {
+  setIsLoading(true);
   axios
     .post(`${baseUrl}/orders`, body)
     .then((res) => {
-      console.log(res.data)
+        setIsLoading(false);
+        setDisplaySuccessPopUp(true)
     })
     .catch((error) => {
       console.log(error);
-      // SetIsLoading(false);
+      setIsLoading(false);
     });
 };

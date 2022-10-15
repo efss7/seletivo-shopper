@@ -33,7 +33,8 @@
         "no-nested-ternary":"off",
         "no-shadow":"off",
         "no-alert":"off",
-        "jsx-a11y/alt-text":"off"
+        "jsx-a11y/alt-text":"off",
+        "no-unused-expressions":"off"
 
     }
 }

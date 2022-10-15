@@ -17,7 +17,9 @@ export const Content = styled.div`
   flex-direction: column;
   background-color: white;
   text-align: center;
-  padding: 0px 16px 0px 16px;
-  height: 216px;
+  align-items: center;
+  padding: 4%;
+  height: auto;
+  border: 10px solid #52b591;
   border-radius: 8px;
 `;

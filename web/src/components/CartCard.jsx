@@ -103,7 +103,6 @@ export const CartCard = (props) => {
                         ? changeQuantity(product)
                         : openInput(product)
                     }
-                    color="primary"
                   >
                     <Edit />
                   </IconButton>
@@ -111,7 +110,6 @@ export const CartCard = (props) => {
                     display="flex"
                     size="small"
                     onClick={() => removeItem(product)}
-                    color="primary"
                   >
                     <Delete />
                   </IconButton>

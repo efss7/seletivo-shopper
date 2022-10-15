@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   IconButton,
+  LinearProgress,
   TextField,
   Toolbar,
   Typography,
@@ -11,7 +12,10 @@ import {
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartCard } from '../components/CartCard';
+import {PopUpError} from '../components/popUp/PopUpError';
+import { PopUpSuccess } from '../components/popUp/PopUpSuccess';
 import { State } from '../global/State';
+
 
 export default function CartPage() {
   const navigate = useNavigate();
@@ -20,11 +24,12 @@ export default function CartPage() {
     onChange,
     totalPrice,
     totalQuantity,
-    calculeTotalPrice,
-    calculeTotalQuantity,
-    finalizeOrder
+    cart,
+    isLoading,
+    displaySuccessPopUp,
+    displayErrorPopUp,
+    checkOrder
   } = useContext(State);
-  console.log(form.date, form.name);
   return (
     <>
       <AppBar position="static" color="primary">
@@ -42,6 +47,7 @@ export default function CartPage() {
           <Box sx={{ flexGrow: 1 }} />
         </Toolbar>
       </AppBar>
+      {isLoading && <LinearProgress color="primary" />}
       <Typography color="primary " margin={2} align="center" variant="h4">
         Dados da compra
       </Typography>
@@ -78,7 +84,9 @@ export default function CartPage() {
         <Typography variant="h6">
           Valor total da compra: R$ {totalPrice}
         </Typography>
-        <Typography variant="h6">Produtos comprados: {totalQuantity}</Typography>
+        <Typography variant="h6">
+          Produtos comprados: {totalQuantity}
+        </Typography>
 
         <Button
           fullWidth
@@ -86,12 +94,25 @@ export default function CartPage() {
           color="primary"
           margin="normal"
           type="submit"
-          onClick={() => finalizeOrder()}
+          onClick={() => checkOrder()}
         >
           Finalizar Pedido
         </Button>
       </Box>
+      {displaySuccessPopUp && <PopUpSuccess />}
+      {displayErrorPopUp && <PopUpError />}
+
       <Box paddingTop="1px" bgcolor="black" />
+      {cart.length === 0 && (
+        <Box textAlign="center">
+          <Typography margin={2} variant="h6">
+            Você ainda não possui produtos no seu carrinho
+          </Typography>
+          <Typography color="textSecondary">
+            Para adicionar volte para página anterior
+          </Typography>
+        </Box>
+      )}
       <CartCard />
     </>
   );

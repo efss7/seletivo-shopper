@@ -5,14 +5,13 @@ import {
   Box,
   IconButton,
   LinearProgress,
-  Pagination,
   Toolbar,
   Typography,
 } from '@mui/material';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PopUp } from '../components/popUp/PopUp';
 import ProductCard from '../components/ProductCard';
+import SearchBar from '../components/SearchBar';
 import { State } from '../global/State';
 import { FindAll } from '../services/Requests';
 
@@ -61,19 +60,11 @@ export const FeedPage = () => {
       {isLoading ? (
         <LinearProgress color="primary" />
       ) : (
-        <>{products.length > 0 && <ProductCard products={products} />}</>
+        <>
+          <SearchBar  />
+          {products.length > 0 && <ProductCard products={products} />}
+        </>
       )}
-
-      {/* <Pagination
-        page={page}
-        count={Math.ceil(50 / 5)}
-        onChange={(_, newPage) =>
-          setSearchParams(
-            { products, page: newPage.toString() },
-            { replace: true }
-          )
-        }
-      /> */}
     </>
   );
 };
