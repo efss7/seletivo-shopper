@@ -65,31 +65,31 @@ Uma aplicação **full-stack** desenvolvida para o processo seletivo da [Shopper
 * Para baixar o projeto
 ```
 1. git clone https://github.com/efss7/seletivo-shopper.git
-
-2. cd seletivo-shopper
 ```
 * Para instalar e rodar o server (obrigatório)
 ```
-3. cd server
-4. npm install
+2. cd seletivo-shopper/server
+3. npm install
 ```
-5. Renomeie o arquivo ```.env.example```  para ```.env``` e preencha as variáveis com seus dados do banco de dados MySQL. É muito importante para a execução do servidor.
+4. Renomeie o arquivo ```.env.example```  para ```.env``` e preencha as variáveis com seus dados do banco de dados MySQL. É muito importante para a execução do servidor.
 ```
-6. npx typeorm-ts-node-commonjs migration:run -d ./src/service/DataSource.ts
-7. npx ts-node-dev ./src/service/PopulateTable.ts
-8. npm run dev
+5. npx typeorm-ts-node-commonjs migration:run -d ./src/service/DataSource.ts
+6. npx ts-node-dev ./src/service/PopulateTable.ts
+7. npm run dev
 ```
 
 * Para rodar os testes unitários (opcional)
 ```
-9. npm run test
+8. npm run test
 ```
-* Para rodar a web (obrigatório) 
+* Para rodar a web (obrigatório)
+
+ ⚠️ Para rodar o web, é necessário deixar o servidor online (como é feito nos passos anteriores),
+ logo depois é **necessário abrir um novo terminal e rodar os comandos abaixo** ⬇️ 
 ```
-10. cd .. (para voltar um diretório)
-11. cd web
-12. npm install
-13. npm run dev
+9. cd seletivo-shopper/web
+10. npm install
+11. npm run dev
 ```
 Após rodar o último comando no seu terminal, ele irá retornar um link, é necessário que coloque ele no seu navegador ou clique aqui ➡️ http://127.0.0.1:5173/
 
