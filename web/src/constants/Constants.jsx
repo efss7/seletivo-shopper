@@ -1,2 +1,2 @@
-export const baseUrl = 'http://shopper-efss.herokuapp.com';
+export const baseUrl = 'http://localhost:3003';
 
