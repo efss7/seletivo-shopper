@@ -100,9 +100,9 @@ Após rodar o último comando no seu terminal, ele irá retornar um link, é nec
 - 3️⃣ CartPage
 
 <div display="flex">
-<img width="200xp" src="https://user-images.githubusercontent.com/99001809/196015782-89604659-81d6-4b07-b752-89361679cb6c.jpeg"/>
-<img width="200xp" src="https://user-images.githubusercontent.com/99001809/196015596-b79e3810-0d3e-47b5-8864-5916330edaeb.jpeg"/>
-<img width="200xp" src="https://user-images.githubusercontent.com/99001809/196015593-28901d58-e6de-4cac-8d62-a9a356586572.jpeg"/>
+<img width="100xp" src="https://user-images.githubusercontent.com/99001809/196015782-89604659-81d6-4b07-b752-89361679cb6c.jpeg"/>
+<img width="100xp" src="https://user-images.githubusercontent.com/99001809/196015596-b79e3810-0d3e-47b5-8864-5916330edaeb.jpeg"/>
+<img width="100xp" src="https://user-images.githubusercontent.com/99001809/196016417-8c9579fc-e76c-4daa-8cc5-ced64bc0bb72.jpeg"/>
 
 </div>
 
