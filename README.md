@@ -75,19 +75,20 @@ Uma aplicação **full-stack** desenvolvida para o processo seletivo da [Shopper
 ```
 5. Renomeie o arquivo ```.env.example```  para ```.env``` e preencha as variáveis com seus dados do banco de dados MySQL. É muito importante para a execução do servidor.
 ```
-6. npm run dev
+6. npx typeorm-ts-node-commonjs migration:run -d ./src/service/DataSource.ts
+7. npm run dev
 ```
 
 * Para rodar os testes unitários (opcional)
 ```
-7. npm run test
+8. npm run test
 ```
 * Para rodar a web (obrigatório) 
 ```
-8. cd .. (para voltar um diretório)
-9. cd web
-10. npm install
-11. npm run dev
+9. cd .. (para voltar um diretório)
+10. cd web
+11. npm install
+12. npm run dev
 ```
 Após rodar o último comando no seu terminal, ele irá retornar um link, é necessário que coloque ele no seu navegador ou clique aqui ➡️ http://127.0.0.1:5173/
 
