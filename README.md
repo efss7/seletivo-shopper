@@ -8,6 +8,7 @@
 <a href="#desenvolvedor">Desenvolvedor</a>
 </p>
 
+<img width="300xp" src="https://user-images.githubusercontent.com/99001809/196015258-0c53369b-0fd1-4ee2-a113-7f8de125f8ee.png"/>
 
 <h1 id="sobre">🛒 Projeto Shopper 🛍️</h1>
 
@@ -90,7 +91,25 @@ Uma aplicação **full-stack** desenvolvida para o processo seletivo da [Shopper
 ```
 Após rodar o último comando no seu terminal, ele irá retornar um link, é necessário que coloque ele no seu navegador ou clique aqui ➡️ http://127.0.0.1:5173/
 
+<h2 id="screenshot">📸 Screenshot</h2>
+
+<h4>A aplicação conta com 3 telas: ⬇️<h4>
+
+- 1️⃣ RegisterPage
+- 2️⃣ HomePage
+- 3️⃣ CartPage
+
+<div display="flex">
+<img width="200xp" src="https://user-images.githubusercontent.com/99001809/196015782-89604659-81d6-4b07-b752-89361679cb6c.jpeg"/>
+<img width="200xp" src="https://user-images.githubusercontent.com/99001809/196015596-b79e3810-0d3e-47b5-8864-5916330edaeb.jpeg"/>
+<img width="200xp" src="https://user-images.githubusercontent.com/99001809/196015593-28901d58-e6de-4cac-8d62-a9a356586572.jpeg"/>
+
+</div>
+
+
 <h2 id="desenvolvedor">👨‍💻 Desenvolvedor</h2>
+
+
 <table>
 <td><a href="https://github.com/efss7"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/99001809?v=4" width="100px;" alt="Imagem profile Eric Silva desenvolvedor"/><br /><sub><b>Eric Silva </b></sub></a><br />
 </table>
