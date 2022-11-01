@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useState } from 'react';
 import useForm from '../hooks/useForm';
 import { useInput } from '../hooks/useInput';
@@ -18,7 +19,9 @@ export function GlobalState(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [displaySuccessPopUp, setDisplaySuccessPopUp] = useState(false);
   const [displayErrorPopUp, setDisplayErrorPopUp] = useState(false);
+  const [displayServerErrorPopUp, setDisplayServerErrorPopUp] = useState(false);
   const [search, handleSearch, clearSearch] = useInput('');
+  const [serverMessageError, setServerMessageError] = useState("");
 
   const calculeTotalPrice = (newCart) => {
     const price = newCart.reduce(
@@ -41,15 +44,13 @@ export function GlobalState(props) {
       products_id: cart.map((product) => product.id),
       product_qty: cart.map((product) => product.quantity),
     };
-    ProductList(newOrder, setIsLoading, setDisplaySuccessPopUp);
+    ProductList(newOrder, setIsLoading, setDisplaySuccessPopUp, setDisplayServerErrorPopUp, setServerMessageError);
   };
 
-  const checkDeliveryDataHasPassed = (deliveryData) => {
-    return (
+  const checkDeliveryDataHasPassed = (deliveryData) => (
       new Date(deliveryData).getTime() >=
       new Date(new Date().toISOString().slice(0, 10)).getTime()
     );
-  };
 
   const checkOrder = () => {
     const isOk =
@@ -97,6 +98,10 @@ export function GlobalState(props) {
     search,
     handleSearch,
     clearSearch,
+    displayServerErrorPopUp,
+    setDisplayServerErrorPopUp,
+    serverMessageError,
+    setServerMessageError 
   };
 
   return <State.Provider value={params}>{props.children}</State.Provider>;

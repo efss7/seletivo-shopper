@@ -1,10 +1,10 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-shadow */
 import { Delete, Edit } from '@mui/icons-material';
 import {
   Box,
   Card,
-  CardActions,
   CardContent,
-  Chip,
   FormControl,
   IconButton,
   InputLabel,
@@ -15,15 +15,12 @@ import {
 import React, { useContext } from 'react';
 import { State } from '../global/State';
 
-export const CartCard = (props) => {
+export function CartCard() {
   const {
     cart,
-    products,
     setCart,
     quantity,
     handleQuantity,
-    clearInput,
-    setProducts,
     calculeTotalPrice,
     calculeTotalQuantity,
   } = useContext(State);
@@ -51,8 +48,7 @@ export const CartCard = (props) => {
   return (
     <>
       {cart.length > 0 &&
-        cart.map((product) => {
-          return (
+        cart.map((product) => (
             <Card
               key={product.id}
               sx={{
@@ -86,13 +82,11 @@ export const CartCard = (props) => {
                         {Array.from(
                           { length: product.qty_stock },
                           (_, index) => index + 1
-                        ).map((quantity) => {
-                          return (
+                        ).map((quantity) => (
                             <MenuItem key={quantity} value={quantity}>
                               {quantity}
                             </MenuItem>
-                          );
-                        })}
+                          ))}
                       </Select>
                     </FormControl>
                   )}
@@ -116,10 +110,9 @@ export const CartCard = (props) => {
                 </Box>
               </CardContent>
             </Card>
-          );
-        })}
+          ))}
     </>
   );
-};
+}
 
 export default CartCard;

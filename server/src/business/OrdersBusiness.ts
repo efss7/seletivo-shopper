@@ -14,28 +14,17 @@ export class OrdersBusiness {
 
   ProductList = async (inputs: OrdersCreateDto) => {
     try {
+      this.validation(inputs)
       const { name, dlr_date, products_id, product_qty } = inputs
-      if (!name || typeof name !== "string") {
-        throw new CustomError(422, "Name is invalid")
-      }
-      if (!dlr_date || typeof name !== "string") {
-        throw new CustomError(422, "Delivery date is invalid")
-      }
-      if (!Array.isArray(products_id) || this.arrayCheck(products_id, "string")) {
-        throw new CustomError(422, "Product is invalid")
-      }
-      if (!Array.isArray(product_qty) || this.arrayCheck(product_qty, "number")) {
-        throw new CustomError(422, "Quantity not available")
-      }
-      if (products_id.length !== product_qty.length) {
-        throw new CustomError(422, "Non-matching product and quantities")
-      }
 
       let ProductsDb = []
-      for (let id of products_id) {
-        const searchResult = await this.productsData.findById(id)
+      for (let i = 0; i < products_id.length; i++) {
+        const searchResult = await this.productsData.findById(products_id[i])
         if (searchResult.length === 0) {
-          throw new CustomError(404, `Product ${id} not found`)
+          throw new CustomError(404, `Product ${products_id[i]} not found`)
+        }
+        if (searchResult[0].getStock() - product_qty[i] < 0) {
+          throw new CustomError(422, `The requested quantity of ${searchResult[0].getName()} is greater than the available quantity`)
         }
         ProductsDb.push(searchResult[0])
       }
@@ -47,9 +36,11 @@ export class OrdersBusiness {
         product.setStock(purchaseQuantity)
         return product
       })
+
       const product = ProductsDb.map((product) => {
         return this.productsData.update(product)
       })
+
       await Promise.all(product)
 
       const id = this.idGenerator.generateId()
@@ -71,6 +62,25 @@ export class OrdersBusiness {
       }
     }
     return false
+  }
+  validation = (inputs: OrdersCreateDto) => {
+    const { name, dlr_date, products_id, product_qty } = inputs
+
+    if (!name || typeof name !== "string") {
+      throw new CustomError(422, "Name is invalid")
+    }
+    if (!dlr_date || typeof name !== "string") {
+      throw new CustomError(422, "Delivery date is invalid")
+    }
+    if (!Array.isArray(products_id) || this.arrayCheck(products_id, "string")) {
+      throw new CustomError(422, "Product is invalid")
+    }
+    if (!Array.isArray(product_qty) || this.arrayCheck(product_qty, "number")) {
+      throw new CustomError(422, "Quantity not available")
+    }
+    if (products_id.length !== product_qty.length) {
+      throw new CustomError(422, "Non-matching product and quantities")
+    }
   }
 }
 

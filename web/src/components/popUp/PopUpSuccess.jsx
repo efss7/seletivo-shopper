@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
 import { Box, Button, Typography } from '@mui/material';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ContainerPopUp, Content } from './styles';
 import Logo from '../../assets/shopper-logo.png';
 import { State } from '../../global/State';
+import { ContainerPopUp, Content } from './styles';
 
-export const PopUpSuccess = () => {
+export function PopUpSuccess() {
   const navigate = useNavigate();
-  const { clearAllData, message } = useContext(State);
+  const { clearAllData } = useContext(State);
   const twoFunctions = () => {
     clearAllData()
     navigate('/home')
@@ -15,7 +15,7 @@ export const PopUpSuccess = () => {
   return (
     <ContainerPopUp>
       <Content>
-        <img width="300px" src={Logo} />
+        <img width="300px" src={Logo} alt='Shopper Logo' />
         <Typography color="primary" variant="h6">
           Compra realizada com sucesso!! :-)
         </Typography>
@@ -33,6 +33,6 @@ export const PopUpSuccess = () => {
       </Content>
     </ContainerPopUp>
   );
-};
+}
 
 export default PopUpSuccess;

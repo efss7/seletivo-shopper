@@ -1,14 +1,14 @@
 import { Search } from '@mui/icons-material';
-import { IconButton, InputAdornment, TextField } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, InputAdornment, TextField } from '@mui/material';
 import React, { useContext } from 'react';
 import { State } from '../global/State';
 
-const SearchBar = () => {
-    const { search, handleSearch, clearSearch } = useContext(State);
+function SearchBar() {
+    const { search, handleSearch } = useContext(State);
   return (
     <Box display="flex" alignItems="center" sx={{margin: 2}}>
       <TextField
+        sx={{bgcolor: 'white', borderRadius: '5px'}}
         fullWidth
         label="Produtos"
         variant="outlined"
@@ -25,6 +25,6 @@ const SearchBar = () => {
       />
     </Box>
   );
-};
+}
 
 export default SearchBar;

@@ -1,20 +1,18 @@
-import React, { useContext } from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { ContainerPopUp, Content } from './styles';
+import React, { useContext } from 'react';
 import Logo from '../../assets/shopper-logo.png';
 import { State } from '../../global/State';
+import { ContainerPopUp, Content } from './styles';
 
-export const PopUpError = () => {
-  const navigate = useNavigate();
-  const { clearAllData, setDisplayErrorPopUp } = useContext(State);
+export function PopUpError() {
+  const { setDisplayErrorPopUp } = useContext(State);
   const twoFunctions = () => {
     setDisplayErrorPopUp(false)
   };
   return (
     <ContainerPopUp>
       <Content >
-        <img width="300px" src={Logo} />
+        <img width="300px" src={Logo} alt='Logo Shopper' />
         <Typography color="error" variant="h6">
           Infelizmente algo deu errado na compra... :-(
         </Typography>
@@ -38,6 +36,6 @@ export const PopUpError = () => {
       </Content>
     </ContainerPopUp>
   );
-};
+}
 
 export default PopUpError;

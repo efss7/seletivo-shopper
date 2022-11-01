@@ -1,9 +1,14 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-shadow */
+/* eslint-disable no-param-reassign */
 import { AddShoppingCart } from '@mui/icons-material';
 import {
   Card,
   CardActions,
   CardContent,
   FormControl,
+  Grid,
   IconButton,
   InputLabel,
   MenuItem,
@@ -11,11 +16,9 @@ import {
   Typography,
 } from '@mui/material';
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { State } from '../global/State';
 
-const ProductCard = (props) => {
-  const navigate = useNavigate();
+function ProductCard(props) {
   const { products } = props;
   const {
     cart,
@@ -57,21 +60,17 @@ const ProductCard = (props) => {
   };
 
   return (
-    <>
+    <Grid container>
       {products
         .filter((product) =>
           product.name.toUpperCase().includes(search.toUpperCase())
         )
-        .map((product) => {
-          return (
+        .map((product) => (
+          <Grid item xs={12} sm={6} md={3}>
             <Card
               key={product.id}
-              sx={{
-                display: { xs: 'flex', md: 'grid' },
-                flexDirection: { xs: 'column', md: 'row' },
-                margin: 1,
-              }}
-            >
+              sx={{margin: 1, height: 400}}
+              >
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>
                   Produto:
@@ -82,14 +81,12 @@ const ProductCard = (props) => {
                 <Typography color="textSecondary">Preço:</Typography>
                 <Typography variant="h6">
                   R$ {product.price.toFixed(2).replace('.', ',')}
-                  <br />
                 </Typography>
                 <Typography color="textSecondary">
                   Quantidade disponível:
                 </Typography>
                 <Typography variant="h6">
                   {product.qty_stock}
-                  <br />
                 </Typography>
               </CardContent>
               <CardActions>
@@ -104,40 +101,38 @@ const ProductCard = (props) => {
                       label="Quantity"
                       onChange={handleQuantity}
                       placeholder="Selecione a quantidade desejada"
-                    >
+                      >
                       {Array.from(
                         { length: product.qty_stock },
                         (_, index) => index + 1
-                      ).map((quantity) => {
-                        return (
+                      ).map((quantity) => (
                           <MenuItem key={quantity} value={quantity}>
                             {quantity}
                           </MenuItem>
-                        );
-                      })}
+                        ))}
                     </Select>
                   </FormControl>
                 )}
                 <IconButton
                   onClick={() =>
                     product.inCart
-                      ? removeProductFromCart(product)
+                    ? removeProductFromCart(product)
                       : product.input
                       ? addProductToCart(product)
                       : openInput(product)
-                  }
-                  aria-label="add to cart"
-                >
+                    }
+                    aria-label="add to cart"
+                    >
                   <AddShoppingCart
                     color={product.inCart ? `primary` : `disabled`}
-                  />
+                    />
                 </IconButton>
               </CardActions>
             </Card>
-          );
-        })}
-    </>
+            </Grid>
+          ))}
+    </Grid>
   );
-};
+}
 
 export default ProductCard;

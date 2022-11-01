@@ -11,7 +11,7 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<HomePage />} />
-        <Route path="/carrinho" element={<CartPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>

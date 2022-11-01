@@ -18,23 +18,14 @@
         "react"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "off",
-        "import/no-extraneous-dependencies": "off",
-        "import/prefer-default-export":"off",
-        "react/jsx-no-constructed-context-values": "off",
-        "react/jsx-no-useless-fragment":"off",
-        "react/prop-types":"off",
-        "react/function-component-definition":"off",
-        "no-unused-vars":"off",
+        "import/prefer-default-export": "off",
+        "quotes":"off",
+        "no-console":"off",
+        "react/jsx-no-constructed-context-values":"off",
+        "react/react-in-jsx-scope":"off",
+        "import/no-named-as-default":"off",
         "react/destructuring-assignment":"off",
-        "no-console": "off",
-        "arrow-body-style":"off",
-        "no-param-reassign":"off",
-        "no-nested-ternary":"off",
-        "no-shadow":"off",
-        "no-alert":"off",
-        "jsx-a11y/alt-text":"off",
-        "no-unused-expressions":"off"
-
+        "react/prop-types":"off",
+        "react/jsx-no-useless-fragment":"off"
     }
 }
