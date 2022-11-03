@@ -3,7 +3,7 @@ GET http://localhost:3003/products
 Content-Type: application/json
 ###
 //ProductList
-POST http://localhost:3003/orders
+POST http://localhost:3003/lists
 Content-Type: application/json
 
 { 

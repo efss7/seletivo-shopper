@@ -21,7 +21,7 @@ export const ProductList = (body, setIsLoading, setDisplaySuccessPopUp, setDispl
   setIsLoading(true);
   console.log(setDisplayServerError, setServerMessageError)
   axios
-    .post(`${baseUrl}/orders`, body)
+    .post(`${baseUrl}/lists`, body)
     .then((res) => {
         setIsLoading(false);
         setDisplaySuccessPopUp(true)

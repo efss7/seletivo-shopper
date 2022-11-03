@@ -1,4 +1,4 @@
-export interface OrdersCreateDto {
+export interface ListsCreateDto {
   name:string,
   dlr_date:string,
   products_id:number[],

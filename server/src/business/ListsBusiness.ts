@@ -1,18 +1,18 @@
-import { OrdersData } from "../data/OrdersData";
+import { ListsData } from "../data/ListsData";
 import { ProductsData } from "../data/ProductsData";
-import { OrdersCreateDto } from "../model/dto/OrdersDto";
-import { Orders } from "../model/Orders";
+import { ListsCreateDto } from "../model/dto/ListsDto";
+import { Lists } from "../model/Lists";
 import { IdGenerator } from "../service/IdGenerator";
 import { CustomError } from "./errors/CustomError";
 
-export class OrdersBusiness {
+export class ListsBusiness {
   constructor(
-    private ordersData: OrdersData,
+    private listsData: ListsData,
     private idGenerator: IdGenerator,
     private productsData: ProductsData
   ) { }
 
-  ProductList = async (inputs: OrdersCreateDto) => {
+  ProductList = async (inputs: ListsCreateDto) => {
     try {
 
       const { name, dlr_date, products_id, product_qty, total_price } = inputs
@@ -70,15 +70,15 @@ export class OrdersBusiness {
 
       const id = this.idGenerator.generateId()
 
-      const ordersArray = products_id.map((idProduct, index) => {
-        return new Orders(id, name, new Date(dlr_date), idProduct, product_qty[index], total_price)
+      const listsArray = products_id.map((idProduct, index) => {
+        return new Lists(id, name, new Date(dlr_date), idProduct, product_qty[index], total_price)
       })
 
-      const order = ordersArray.map((order) => {
-        return this.ordersData.create(order)
+      const list = listsArray.map((list) => {
+        return this.listsData.create(list)
       })
 
-      const result = await Promise.all(order)
+      const result = await Promise.all(list)
     } catch (error: any) {
       throw new CustomError(error.statusCode, error.message)
     }
@@ -95,8 +95,8 @@ export class OrdersBusiness {
 
 }
 
-export default new OrdersBusiness(
-  new OrdersData(),
+export default new ListsBusiness(
+  new ListsData(),
   new IdGenerator(),
   new ProductsData()
 );

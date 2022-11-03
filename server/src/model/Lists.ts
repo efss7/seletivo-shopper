@@ -1,4 +1,4 @@
-export class Orders {
+export class Lists {
   constructor(
     private id: string,
     private name: string,

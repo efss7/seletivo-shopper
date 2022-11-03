@@ -1,11 +1,11 @@
 import { CustomError } from "../business/errors/CustomError";
-import { Orders } from "../model/Orders";
+import { Lists } from "../model/Lists";
 import BaseDatabase from "./BaseDatabase";
 
-export class OrdersData extends BaseDatabase {
-  create = async (input: Orders): Promise<void> => {
+export class ListsData extends BaseDatabase {
+  create = async (input: Lists): Promise<void> => {
     try {
-      await BaseDatabase.connection("orders")
+      await BaseDatabase.connection("lists")
         .insert({
           id: input.getId(),
           name: input.getName(),

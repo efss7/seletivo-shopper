@@ -1,10 +1,10 @@
-import { OrdersBusiness } from "../src/business/OrdersBusiness";
+import { ListsBusiness } from "../src/business/ListsBusiness";
 import IdGeneratorMock from "./data/idGenerator";
-import { OrdersDataMock } from "./data/mock/OrdersDataMock";
+import { ListsDataMock } from "./data/mock/ListsDataMock";
 import { ProductsDataMock } from "./data/mock/ProductsDataMock";
 
-const OrdersBusinessMock = new OrdersBusiness(
-  new OrdersDataMock(),
+const ListsBusinessMock = new ListsBusiness(
+  new ListsDataMock(),
   new IdGeneratorMock(),
   new ProductsDataMock()
 );
@@ -16,12 +16,12 @@ export const inputs = {
   "product_qty": [1],
   "total_price": 1
 }
-describe("test OrdersBusiness class", () => {
+describe("test ListsBusiness class", () => {
   describe("test ProductList", () => {
     test("test missing name", async () => {
       inputs.name = "";
       try {
-        await OrdersBusinessMock.ProductList(inputs)
+        await ListsBusinessMock.ProductList(inputs)
       } catch (error: any) {
         inputs.name = "name";
         expect(error.message).toEqual("Name is invalid");
@@ -33,7 +33,7 @@ describe("test OrdersBusiness class", () => {
     test("test missing dlr_date", async () => {
       inputs.dlr_date = "";
       try {
-        await OrdersBusinessMock.ProductList(inputs)
+        await ListsBusinessMock.ProductList(inputs)
       } catch (error: any) {
         inputs.dlr_date = "2022/10/10";
         expect(error.message).toEqual("Delivery date is invalid");
@@ -45,7 +45,7 @@ describe("test OrdersBusiness class", () => {
     test("test missing products_id", async () => {
       inputs.products_id = [null];
       try {
-        await OrdersBusinessMock.ProductList(inputs)
+        await ListsBusinessMock.ProductList(inputs)
       } catch (error: any) {
         inputs.products_id = [1];
         expect(error.message).toEqual("Product is invalid");
@@ -57,7 +57,7 @@ describe("test OrdersBusiness class", () => {
     test("test missing product_qty", async () => {
       inputs.product_qty = [null];
       try {
-        await OrdersBusinessMock.ProductList(inputs)
+        await ListsBusinessMock.ProductList(inputs)
       } catch (error: any) {
         inputs.product_qty = [1];
         expect(error.message).toEqual("Quantity not available");
@@ -69,7 +69,7 @@ describe("test OrdersBusiness class", () => {
     test("test missing total_price", async () => {
       inputs.total_price = null;
       try {
-        await OrdersBusinessMock.ProductList(inputs)
+        await ListsBusinessMock.ProductList(inputs)
       } catch (error: any) {
         inputs.total_price = 1;
         expect(error.message).toEqual("Total price invalid");
