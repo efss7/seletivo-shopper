@@ -9,7 +9,8 @@ Content-Type: application/json
 { 
   "name": "teste",
   "dlr_date": "2022/11/01",
-  "products_id": ["0246106b-0ca3-4b2b-b190-e5ed2beeb13a", "0fe03bb9-ea61-4a4b-b62d-9c57b282b04d"],
-  "product_qty": [1, 1]
+  "products_id": [16, 19],
+  "product_qty": [1, 1],
+  "total_price": 1
 }
 

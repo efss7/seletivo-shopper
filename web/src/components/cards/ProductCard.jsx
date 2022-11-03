@@ -16,7 +16,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useContext } from 'react';
-import { State } from '../global/State';
+import { State } from '../../global/State';
 
 function ProductCard(props) {
   const { products } = props;
@@ -66,10 +66,10 @@ function ProductCard(props) {
           product.name.toUpperCase().includes(search.toUpperCase())
         )
         .map((product) => (
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6}>
             <Card
               key={product.id}
-              sx={{margin: 1, height: 400}}
+              sx={{margin: 1}}
               >
               <CardContent>
                 <Typography color="textSecondary" gutterBottom>

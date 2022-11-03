@@ -11,7 +11,8 @@ export class OrdersData extends BaseDatabase {
           name: input.getName(),
           dlr_date: input.getDlrDate(),
           products_id: input.getProducts(),
-          product_qty: input.getQuantity()
+          product_qty: input.getQuantity(),
+          total_price: input.getTotalPrice()
         })
     } catch (error: any) {
       throw new CustomError(500, error.sqlMessage);

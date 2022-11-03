@@ -5,6 +5,6 @@ export interface ProductCreateDto{
 }
 
 export interface ProductsUpdateDto {
-  id:string
+  id:number
   qty_stock: number
 }

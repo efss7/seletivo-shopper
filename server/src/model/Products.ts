@@ -1,12 +1,12 @@
 export class Products {
   constructor(
-    private id: string,
+    private id: number,
     private qty_stock: number,
     private name?: string,
     private price?: number,
   ) { }
 
-  public getId(): string {
+  public getId(): number {
     return this.id;
   }
 

@@ -6,7 +6,7 @@ const ProductsBusinessMock = new ProductsBusiness(
 );
 
 export const inputs = {
-  id: "id1",
+  id: 1,
   name: "name",
   price: 1,
   qty_stock: 1,
@@ -27,11 +27,11 @@ describe("test ProductsBusiness class", () => {
   })
   describe("test update", ()=>{
     test("test missing products_id", async () => {
-      inputs.id = "";
+      inputs.id = null;
       try {
         await ProductsBusinessMock.update(inputs)
       } catch (error: any) {
-        inputs.id = "id1";
+        inputs.id = 1;
         expect(error.message).toEqual("Id is invalid");
         expect(error.statusCode).toStrictEqual(422);
       } finally {

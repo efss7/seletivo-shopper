@@ -31,6 +31,11 @@ export class orders1665255204463 implements MigrationInterface {
               name: "product_qty",
               type: "int",
               comment: "quantidade do produto",
+            },
+            {
+              name: "total_price",
+              type: "float",
+              comment: "quantidade do produto",
             }
           ],
         }),

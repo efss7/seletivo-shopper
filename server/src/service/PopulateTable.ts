@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as csv from 'fast-csv';
 import { AppDataSource } from './DataSource';
-import IdGenerator from './IdGenerator';
 import { ProductsEntity } from '../model/entity/ProductsEntity';
 
 //Arquivo de popular a tabela com o arquivo csv
@@ -17,9 +16,8 @@ const read = () => {
         await AppDataSource.initialize()
         const repository = AppDataSource.getRepository(ProductsEntity)
         const promisesArray = products.map(product => {
-          const id = IdGenerator.generateId()
           const newProduct = new ProductsEntity(
-            id,
+            product.id,
             product.name,
             product.price,
             product.qty_stock

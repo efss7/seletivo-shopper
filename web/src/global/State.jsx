@@ -43,6 +43,7 @@ export function GlobalState(props) {
       dlr_date: form.date,
       products_id: cart.map((product) => product.id),
       product_qty: cart.map((product) => product.quantity),
+      total_price: totalPrice
     };
     ProductList(newOrder, setIsLoading, setDisplaySuccessPopUp, setDisplayServerErrorPopUp, setServerMessageError);
   };

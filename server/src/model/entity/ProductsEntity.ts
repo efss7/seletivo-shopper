@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryColumn } from "typeorm"
 @Entity({name:"products"})
 export class ProductsEntity {
   constructor(
-    id: string,
+    id: number,
     name: string,
     price: number,
     qty_stock: number
@@ -14,7 +14,7 @@ export class ProductsEntity {
     this.qty_stock=qty_stock
   }
   @PrimaryColumn()
-   id: string
+   id: number
 
    @Column()
    name: string

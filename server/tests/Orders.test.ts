@@ -12,8 +12,9 @@ const OrdersBusinessMock = new OrdersBusiness(
 export const inputs = {
   "name": "name",
   "dlr_date": "2022/10/10",
-  "products_id": ["id1"],
-  "product_qty": [1]
+  "products_id": [1],
+  "product_qty": [1],
+  "total_price": 1
 }
 describe("test OrdersBusiness class", () => {
   describe("test ProductList", () => {
@@ -46,7 +47,7 @@ describe("test OrdersBusiness class", () => {
       try {
         await OrdersBusinessMock.ProductList(inputs)
       } catch (error: any) {
-        inputs.products_id = ["id1"];
+        inputs.products_id = [1];
         expect(error.message).toEqual("Product is invalid");
         expect(error.statusCode).toStrictEqual(422);
       } finally {
@@ -60,6 +61,18 @@ describe("test OrdersBusiness class", () => {
       } catch (error: any) {
         inputs.product_qty = [1];
         expect(error.message).toEqual("Quantity not available");
+        expect(error.statusCode).toStrictEqual(422);
+      } finally {
+        expect.assertions(2);
+      }
+    })
+    test("test missing total_price", async () => {
+      inputs.total_price = null;
+      try {
+        await OrdersBusinessMock.ProductList(inputs)
+      } catch (error: any) {
+        inputs.total_price = 1;
+        expect(error.message).toEqual("Total price invalid");
         expect(error.statusCode).toStrictEqual(422);
       } finally {
         expect.assertions(2);

@@ -13,7 +13,7 @@ export class ProductsData extends BaseDatabase {
     }
   }
 
-  findById = async (id: string) => {
+  findById = async (id: number) => {
     try {
       const result = await BaseDatabase.connection("products")
         .select("*")

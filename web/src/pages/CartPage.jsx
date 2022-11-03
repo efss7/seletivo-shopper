@@ -4,7 +4,7 @@ import {
   Typography
 } from '@mui/material';
 import React, { useContext } from 'react';
-import { CartCard } from '../components/CartCard';
+import CartCard from '../components/cards/CartCard';
 import { CartForm } from '../components/forms/CartForm';
 import { CartHeader } from '../components/headers/CartHeader';
 import { PopUpError } from '../components/popUp/PopUpError';

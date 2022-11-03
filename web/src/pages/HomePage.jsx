@@ -1,9 +1,8 @@
-import {
-  LinearProgress,
-} from '@mui/material';
+/* eslint-disable react/jsx-curly-brace-presence */
+import {LinearProgress} from '@mui/material';
 import React, { useContext, useEffect } from 'react';
+import ProductCard from '../components/cards/ProductCard';
 import { HomeHeader } from '../components/headers/HomeHeader';
-import ProductCard from '../components/ProductCard';
 import SearchBar from '../components/SearchBar';
 import { State } from '../global/State';
 import { FindAll } from '../services/Requests';

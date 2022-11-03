@@ -15,9 +15,9 @@ export class ProductsBusiness {
     }
   };
 
-  findById = async (id: string) => {
+  findById = async (id: number) => {
     try {
-      if (!id || typeof id !== "string") {
+      if (!id || typeof id !== "number") {
         throw new CustomError(422, "Id invalid")
       }
       const result = await this.productsData.findById(id);
@@ -33,7 +33,7 @@ export class ProductsBusiness {
   update = async (inputs: ProductsUpdateDto) => {
     try {
       const { id, qty_stock } = inputs
-      if (!id || typeof id !== "string") {
+      if (!id || typeof id !== "number") {
         throw new CustomError(422, "Id is invalid")
       }
       if (!qty_stock || typeof qty_stock !== "number" || qty_stock > 0) {
