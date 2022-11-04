@@ -33,7 +33,7 @@ Uma aplicação **full-stack** desenvolvida para o processo seletivo da [Shopper
 
 <h2 id="linkApp">🔗 Link da Aplicação</h2>
 
-- [ShopperApp](http://efss-shopper.surge.sh/)
+- [ShopperApp](http://shopper-efss7.surge.sh/)
 
 <h2 id="documentação">📃 Documentação da API no Postman</h2>
 
