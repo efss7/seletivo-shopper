@@ -1,17 +1,16 @@
-/* eslint-disable jsx-a11y/alt-text */
 import { Box, Button, Typography } from '@mui/material';
 import React, { useContext } from 'react';
 import Logo from '../../assets/shopper-logo.png';
 import { State } from '../../global/State';
-import { ContainerPopUp, Content } from './styles';
+import { ContainerModal, Content } from './styles';
 
-export function PopUpErrorServer() {
-    const { setDisplayServerErrorPopUp, serverMessageError } = useContext(State);
+export function ModalErrorServer() {
+    const { setDisplayServerErrorModal, serverMessageError } = useContext(State);
     const twoFunctions = () => {
-        setDisplayServerErrorPopUp(false)
+        setDisplayServerErrorModal(false)
     };
     return (
-        <ContainerPopUp>
+        <ContainerModal>
             <Content >
                 <img width="300px" src={Logo} />
                 <Typography color="error" variant="h6">
@@ -35,8 +34,6 @@ export function PopUpErrorServer() {
                     </Button>
                 </Box>
             </Content>
-        </ContainerPopUp>
+        </ContainerModal>
     );
 }
-
-export default PopUpErrorServer;

@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../assets/shopper-logo.png';
 import { State } from '../../global/State';
-import { ContainerPopUp, Content } from './styles';
+import { ContainerModal, Content } from './styles';
 
-export function PopUpSuccess() {
+export function ModalSuccess() {
   const navigate = useNavigate();
   const { clearAllData } = useContext(State);
   const twoFunctions = () => {
@@ -13,7 +13,7 @@ export function PopUpSuccess() {
     navigate('/home')
   };
   return (
-    <ContainerPopUp>
+    <ContainerModal>
       <Content>
         <img width="300px" src={Logo} alt='Shopper Logo' />
         <Typography color="primary" variant="h6">
@@ -31,8 +31,7 @@ export function PopUpSuccess() {
           </Button>
         </Box>
       </Content>
-    </ContainerPopUp>
+    </ContainerModal>
   );
 }
 
-export default PopUpSuccess;

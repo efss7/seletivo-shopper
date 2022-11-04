@@ -8,6 +8,7 @@ export class ProductsData extends BaseDatabase {
     try {
       return BaseDatabase.connection("products")
         .select("*")
+        .orderBy("name", 'asc')
     } catch (error) {
       throw new CustomError(500, error.sqlMessage)
     }

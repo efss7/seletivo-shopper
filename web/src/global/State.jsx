@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 import React, { useState } from 'react';
 import useForm from '../hooks/useForm';
 import { useInput } from '../hooks/useInput';
@@ -17,9 +16,9 @@ export function GlobalState(props) {
   });
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [displaySuccessPopUp, setDisplaySuccessPopUp] = useState(false);
-  const [displayErrorPopUp, setDisplayErrorPopUp] = useState(false);
-  const [displayServerErrorPopUp, setDisplayServerErrorPopUp] = useState(false);
+  const [displaySuccessModal, setDisplaySuccessModal] = useState(false);
+  const [displayErrorModal, setDisplayErrorModal] = useState(false);
+  const [displayServerErrorModal, setDisplayServerErrorModal] = useState(false);
   const [search, handleSearch, clearSearch] = useInput('');
   const [serverMessageError, setServerMessageError] = useState("");
 
@@ -45,7 +44,7 @@ export function GlobalState(props) {
       product_qty: cart.map((product) => product.quantity),
       total_price: totalPrice
     };
-    ProductList(newOrder, setIsLoading, setDisplaySuccessPopUp, setDisplayServerErrorPopUp, setServerMessageError);
+    ProductList(newOrder, setIsLoading, setDisplaySuccessModal, setDisplayServerErrorModal, setServerMessageError);
   };
 
   const checkDeliveryDataHasPassed = (deliveryData) => (
@@ -59,7 +58,7 @@ export function GlobalState(props) {
       form.date &&
       checkDeliveryDataHasPassed(form.date) &&
       cart.length > 0;
-    isOk ? finalizeOrder() : setDisplayErrorPopUp(true);
+    isOk ? finalizeOrder() : setDisplayErrorModal(true);
   };
 
   const clearAllData = () => {
@@ -67,7 +66,7 @@ export function GlobalState(props) {
     setTotalPrice(0);
     setTotalQuantity(0);
     clear();
-    setDisplaySuccessPopUp(false);
+    setDisplaySuccessModal(false);
   };
 
   const params = {
@@ -90,17 +89,17 @@ export function GlobalState(props) {
     calculeTotalPrice,
     calculeTotalQuantity,
     finalizeOrder,
-    displaySuccessPopUp,
-    setDisplaySuccessPopUp,
+    displaySuccessModal,
+    setDisplaySuccessModal,
     clearAllData,
-    displayErrorPopUp,
-    setDisplayErrorPopUp,
+    displayErrorModal,
+    setDisplayErrorModal,
     checkOrder,
     search,
     handleSearch,
     clearSearch,
-    displayServerErrorPopUp,
-    setDisplayServerErrorPopUp,
+    displayServerErrorModal,
+    setDisplayServerErrorModal,
     serverMessageError,
     setServerMessageError 
   };

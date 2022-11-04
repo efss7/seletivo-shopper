@@ -22,8 +22,6 @@ export function HomeHeader() {
                 <Box sx={{ flexGrow: 1 }} />
                     <IconButton
                         size="large"
-                        aria-label="show more"
-                        aria-haspopup="true"
                         onClick={() => navigate('/cart')}
                         color="inherit"
                     >

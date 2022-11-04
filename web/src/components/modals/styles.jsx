@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerPopUp = styled.div`
+export const ContainerModal = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;

@@ -2,15 +2,15 @@ import { Box, Button, Typography } from '@mui/material';
 import React, { useContext } from 'react';
 import Logo from '../../assets/shopper-logo.png';
 import { State } from '../../global/State';
-import { ContainerPopUp, Content } from './styles';
+import { ContainerModal, Content } from './styles';
 
-export function PopUpError() {
-  const { setDisplayErrorPopUp } = useContext(State);
+export function ModalError() {
+  const { setDisplayErrorModal } = useContext(State);
   const twoFunctions = () => {
-    setDisplayErrorPopUp(false)
+    setDisplayErrorModal(false)
   };
   return (
-    <ContainerPopUp>
+    <ContainerModal>
       <Content >
         <img width="300px" src={Logo} alt='Logo Shopper' />
         <Typography color="error" variant="h6">
@@ -34,8 +34,6 @@ export function PopUpError() {
           </Button>
         </Box>
       </Content>
-    </ContainerPopUp>
+    </ContainerModal>
   );
 }
-
-export default PopUpError;

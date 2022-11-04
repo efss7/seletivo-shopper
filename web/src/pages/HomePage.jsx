@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-curly-brace-presence */
-import {LinearProgress} from '@mui/material';
+import { LinearProgress } from '@mui/material';
 import React, { useContext, useEffect } from 'react';
 import ProductCard from '../components/cards/ProductCard';
 import { HomeHeader } from '../components/headers/HomeHeader';
@@ -14,16 +13,15 @@ export function FeedPage() {
   useEffect(() => {
     FindAll(setProducts, setIsLoading);
   }, [setProducts]);
-
-
+  
   return (
     <>
-      <HomeHeader/>
+      <HomeHeader />
       {isLoading ? (
         <LinearProgress color="primary" />
       ) : (
         <>
-          <SearchBar  />
+          <SearchBar />
           {products.length > 0 && <ProductCard products={products} />}
         </>
       )}

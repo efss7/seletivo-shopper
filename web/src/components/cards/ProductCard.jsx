@@ -1,7 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-shadow */
-/* eslint-disable no-param-reassign */
 import { AddShoppingCart } from '@mui/icons-material';
 import {
   Card,

@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-shadow */
 import { Delete, Edit } from '@mui/icons-material';
 import {
   Box,

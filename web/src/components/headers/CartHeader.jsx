@@ -12,8 +12,6 @@ export function CartHeader() {
       <Toolbar>
         <IconButton
           size="large"
-          aria-label="show more"
-          aria-haspopup="true"
           onClick={() => navigate(-1)}
           color="inherit"
         >
